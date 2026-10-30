@@ -1,0 +1,15 @@
+export const TRIGGERS = [
+  { id: 'stress', label: 'Stres', icon: '😤' },
+  { id: 'boredom', label: 'Plictiseală', icon: '😑' },
+  { id: 'anxiety', label: 'Anxietate', icon: '😰' },
+  { id: 'social', label: 'Presiune socială', icon: '👥' },
+  { id: 'loneliness', label: 'Singurătate', icon: '😔' },
+  { id: 'celebration', label: 'Celebrare', icon: '🎉' },
+  { id: 'habit', label: 'Reflex / Rutină', icon: '🔄' },
+  { id: 'anger', label: 'Furie', icon: '😠' },
+  { id: 'sadness', label: 'Tristețe', icon: '😢' },
+  { id: 'tiredness', label: 'Oboseală', icon: '😴' },
+  { id: 'hunger', label: 'Foame / Sete', icon: '🍽️' },
+  { id: 'environment', label: 'Mediu / Loc', icon: '📍' },
+  { id: 'other', label: 'Altul', icon: '❓' },
+];

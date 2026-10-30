@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "Progres 100",
+    "slug": "progres100",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#0A0A0F"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.progres100.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0A0A0F"
+      },
+      "package": "com.progres100.app"
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "color": "#6C5CE7"
+        }
+      ]
+    ]
+  }
+}

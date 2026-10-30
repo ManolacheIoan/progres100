@@ -1,0 +1,24 @@
+# Dependențe
+node_modules/
+
+# Variabile de mediu (chei secrete)
+.env
+.env.*
+!.env.example
+
+# Expo
+.expo/
+dist/
+web-build/
+
+# Proiecte native generate (se regenerează cu `npx expo prebuild`)
+android/
+ios/
+
+# Sistem / editor
+.DS_Store
+.watchman-cookie-*
+.vscode/
+.idea/
+.claude/
+*.log
