@@ -6,6 +6,10 @@ Proiect de licență — Ioan Manolache
 
 ---
 
+## English summary
+
+Bachelor's thesis project: a cross-platform mobile app (iOS and Android) that helps people break harmful habits such as smoking, alcohol, excessive social media use or procrastination. It combines daily progress tracking with behavioural psychology techniques and AI-generated tips (Claude API), with local fallback suggestions when offline. Data is stored on the device, with optional cloud sync. Built with React Native, Expo and Firebase. The app itself is in Romanian.
+
 ## Cuprins
 
 1. [Descriere](#descriere)
