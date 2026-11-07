@@ -20,8 +20,9 @@ Bachelor's thesis project: a cross-platform mobile app (iOS and Android) that he
 6. [Structura proiectului](#structura-proiectului)
 7. [Modelul de date](#modelul-de-date)
 8. [Instalare și rulare](#instalare-și-rulare)
-9. [Configurare](#configurare)
-10. [Direcții de dezvoltare](#direcții-de-dezvoltare)
+9. [Teste](#teste)
+10. [Configurare](#configurare)
+11. [Direcții de dezvoltare](#direcții-de-dezvoltare)
 
 ---
 
@@ -161,6 +162,16 @@ npx expo run:android
 npx expo run:ios
 ```
 
+## Teste
+
+Logica de calcul are teste unitare (Jest, preset `jest-expo`): zilele consecutive, cea mai lungă serie, rata de reușită pe 7 și 30 de zile, recăderile, declanșatorul cel mai frecvent, ziua cea mai grea și deblocarea etapelor. Stocarea locală și sincronizarea în cloud sunt simulate, iar data e fixă, ca rezultatele să fie aceleași la fiecare rulare.
+
+```bash
+npm test
+```
+
+Testele rulează automat pe GitHub Actions la fiecare push.
+
 ## Configurare
 
 Fișierul `.env` (vezi `.env.example`) conține:
@@ -179,7 +190,7 @@ Fișierul `.env` (vezi `.env.example`) conține:
 - Grafice avansate și exportul datelor.
 - Funcții sociale: parteneri de responsabilitate, grupuri de suport.
 - Widget-uri pentru ecranul principal.
-- Teste automate (unit și end-to-end).
+- Teste end-to-end pe dispozitiv (de exemplu cu Maestro sau Detox).
 
 ---
 

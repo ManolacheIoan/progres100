@@ -1,0 +1,25 @@
+# Runs the unit tests (Jest) on every push to main and on pull requests.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      # npm install instead of npm ci: npm ci rejects the lock file over optional WASM deps on Linux.
+      - run: npm install --no-audit --no-fund
+      - run: npm test -- --ci
