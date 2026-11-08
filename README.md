@@ -1,5 +1,7 @@
 # Progres 100
 
+[![CI](https://github.com/ManolacheIoan/progres100/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ManolacheIoan/progres100/actions/workflows/ci.yml)
+
 **Aplicație mobilă pentru eliminarea obiceiurilor nocive și formarea consecvenței**
 
 Proiect de licență — Ioan Manolache
