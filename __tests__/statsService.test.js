@@ -80,6 +80,18 @@ describe('computeBestStreak', () => {
     expect(firestoreService.syncHabitData).toHaveBeenCalledWith('h1', 'bestStreak', 3);
   });
 
+  test('a missing day breaks the run, like for the current streak', async () => {
+    storage.get.mockResolvedValue(0);
+    // Two successes, then a day with no check-in, then one more success: the best run is 2, not 3.
+    const data = checkins({ 4: 'success', 3: 'success', 1: 'success' });
+    await expect(statsService.computeBestStreak('h1', data)).resolves.toBe(2);
+  });
+
+  test('success days far apart are separate runs', async () => {
+    storage.get.mockResolvedValue(0);
+    await expect(statsService.computeBestStreak('h1', checkins({ 9: 'success', 0: 'success' }))).resolves.toBe(1);
+  });
+
   test('keeps the stored best when the history is shorter', async () => {
     storage.get.mockResolvedValue(10);
     await expect(statsService.computeBestStreak('h1', checkins({ 1: 'success', 0: 'success' }))).resolves.toBe(10);

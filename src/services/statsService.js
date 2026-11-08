@@ -2,6 +2,15 @@ import checkinService, { dateKey } from './checkinService';
 import storage from './storageService';
 import firestoreService from './firestoreService';
 
+/** Whole days between two "YYYY-MM-DD" keys, computed in UTC so daylight saving time does not matter. */
+const daysBetween = (fromKey, toKey) => {
+  const toUtc = (key) => {
+    const [y, m, d] = key.split('-').map(Number);
+    return Date.UTC(y, m - 1, d);
+  };
+  return Math.round((toUtc(toKey) - toUtc(fromKey)) / 86400000);
+};
+
 const statsService = {
   computeCurrentStreak: (checkins) => {
     let streak = 0;
@@ -28,14 +37,18 @@ const statsService = {
     if (!dates.length) return storedBest;
     let current = 0;
     let best = storedBest;
+    let previousKey = null;
     for (const date of dates) {
       const status = checkins[date].status;
       if (status === 'success' || status === 'grace') {
-        current++;
+        // A day without a check-in breaks the run, the same way it does for the current streak.
+        const continuesRun = previousKey !== null && daysBetween(previousKey, date) === 1;
+        current = continuesRun ? current + 1 : 1;
         if (current > best) best = current;
       } else {
         current = 0;
       }
+      previousKey = date;
     }
     if (best > storedBest) {
       await storage.set(storage.bestStreakKey(habitId), best);
